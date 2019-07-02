@@ -1,0 +1,41 @@
+#include "chess.h"
+#include "figures.h"
+
+void display(){
+	char** casillero1=superImpose(rook,reverse(whiteSquare));
+	char** casillero2=superImpose(knight,whiteSquare);
+	char** casillero3=superImpose(bishop,reverse(whiteSquare));
+	char** casillero4=superImpose(queen,whiteSquare);
+	char** casillero5=superImpose(king,reverse(whiteSquare));
+	char** casillero6=superImpose(bishop,whiteSquare);
+	char** casillero7=superImpose(knight,reverse(whiteSquare));
+	char** casillero8=superImpose(rook,whiteSquare);
+	char** casillero1n=superImpose(reverse(rook),whiteSquare);
+	char** casillero2n=superImpose(reverse(knight),reverse(whiteSquare));
+	char** casillero3n=superImpose(reverse(bishop),whiteSquare);
+	char** casillero4n=superImpose(reverse(queen),reverse(whiteSquare));
+	char** casillero5n=superImpose(reverse(king),whiteSquare);
+	char** casillero6n=superImpose(reverse(bishop),reverse(whiteSquare));
+	char** casillero7n=superImpose(reverse(knight),whiteSquare);
+	char** casillero8n=superImpose(reverse(rook),reverse(whiteSquare));
+	char** primermitad=join(join(casillero1,casillero2),join(casillero3,casillero4));
+	char** segundamitad=join(join(casillero5,casillero6),join(casillero7,casillero8));
+	char** primermitadn=join(join(casillero1n,casillero2n),join(casillero3n,casillero4n));
+	char** segundamitadn=join(join(casillero5n,casillero6n),join(casillero7n,casillero8n));
+	char** casillero1peonblanco=superImpose(pawn,whiteSquare);
+	char** casillero2peonblanco=superImpose(pawn,reverse(whiteSquare));
+	char** casillero1peonnegro=superImpose(reverse(pawn),reverse(whiteSquare));
+	char** casillero2peonnegro=superImpose(reverse(pawn),whiteSquare);
+	char** primerafila=join(primermitad,segundamitad);
+	char** segundafila=repeatH(join(casillero1peonblanco,casillero2peonblanco),4);
+	char** tercerafila=repeatH(join(reverse(whiteSquare),whiteSquare),4);
+	char** cuartafila=repeatH(join(whiteSquare,reverse(whiteSquare)),4);
+	char** septimafila=repeatH(join(casillero1peonnegro,casillero2peonnegro),4);
+	char** octavafila=join(primermitadn,segundamitadn);
+	char** columna12=up(primerafila,segundafila);
+	char** filasespacioblanco=repeatV(up(tercerafila,cuartafila),2);
+	char** columna16=up(columna12,filasespacioblanco);
+	char** columna17=up(columna16,septimafila);
+	char** columna18=up(columna17,octavafila);
+	interpreter(columna18);
+}
