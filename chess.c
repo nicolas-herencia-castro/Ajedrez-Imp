@@ -49,3 +49,19 @@ char** join(char**a,char**b){
   
   return unir;
 }
+
+char** reverse(char**a){
+  int filas=tamFila(a);
+  int columnas=tamCol(a);
+  int i,j;
+  char** reves=(char**)malloc(sizeof(char*)*(filas));
+  for(i=0;i<filas;i++){
+    reves[i]=(char*)malloc(sizeof(char)*(columnas));
+    for(j=0;j<columnas;j++){
+      reves[i][j]=invColor(a[i][j]);
+    }
+    reves[i][j]=0;
+  }
+  reves[filas]=0;
+  return reves;
+}
