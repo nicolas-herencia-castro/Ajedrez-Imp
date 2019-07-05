@@ -114,3 +114,25 @@ char** rotateL(char**a){
 }
 
 
+char** repeatH(char** fig,int n){
+
+  int filas = tamFila(fig);
+  int columnas = tamCol(fig);
+  int i,j,k,l=0;
+
+  char** unir = (char**)malloc(sizeof(char*)*(filas));
+  for(i=0;i<filas;i++){
+    unir[i]=(char*)malloc(sizeof(filas)*(columnas*n));
+    l=0;
+    for(k=0;k<n;k++){
+      for(j=0;j<columnas;j++){
+        unir[i][l]=fig[i][j];
+        l++;
+      }
+    }	
+    unir[i][l]=0;
+  }
+  unir[filas]=0;
+  return unir;
+}
+
