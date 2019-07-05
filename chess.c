@@ -65,3 +65,52 @@ char** reverse(char**a){
   reves[filas]=0;
   return reves;
 }
+
+char** rotateR(char** a){
+
+	int filas=tamCol(a);
+	int columnas=tamFila(a);
+	int i,j,k;
+	char** rr=(char**)malloc(sizeof(char*)*(filas));
+
+	for(i=0;i<filas;i++){
+		rr[i]=(char*)malloc(sizeof(char)*(columnas));
+	}
+
+	for(i=0;i<filas;i++){
+    k=0;
+		for(j=columnas-1;j>=0;j--){
+			rr[i][k] = a[j][i];
+      k++;
+		}
+		rr[i][k]=0;
+	}
+	rr[filas]=0;
+  return rr;
+}
+
+char** rotateL(char**a){
+
+	
+	int filas = tamFila(a);
+	int columnas = tamCol(a);
+	
+	int i,j,k;
+	char** rotar=(char**)malloc(sizeof(char*)*(columnas));
+	
+	for(i=0;i<columnas;i++){
+		rotar[i]=(char*)malloc(sizeof(char)*(filas));
+	}
+	k=0;
+	for(i=columnas-1;i>=0;i--){
+		for(j=0;j<filas;j++){
+			rotar[k][j] = a[j][i];
+		}
+		rotar[k][j]=0;
+	       k++;	
+	}
+	rotar[columnas]=0;
+	return rotar;
+}
+
+
