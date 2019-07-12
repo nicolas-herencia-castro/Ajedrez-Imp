@@ -45,7 +45,7 @@ char** join(char**a,char**b){
     for(j=0;j<filas;j++){
       strcpy(unir[j],a[j]);
       strcat(unir[j],b[j]);
-    }	
+    } 
   
   return unir;
 }
@@ -129,49 +129,49 @@ char** flipH(char** f){
 
 char** rotateR(char** a){
 
-	int filas=tamCol(a);
-	int columnas=tamFila(a);
-	int i,j,k;
-	char** rr=(char**)malloc(sizeof(char*)*(filas));
+  int filas=tamCol(a);
+  int columnas=tamFila(a);
+  int i,j,k;
+  char** rr=(char**)malloc(sizeof(char*)*(filas));
 
-	for(i=0;i<filas;i++){
-		rr[i]=(char*)malloc(sizeof(char)*(columnas));
-	}
+  for(i=0;i<filas;i++){
+    rr[i]=(char*)malloc(sizeof(char)*(columnas));
+  }
 
-	for(i=0;i<filas;i++){
+  for(i=0;i<filas;i++){
     k=0;
-		for(j=columnas-1;j>=0;j--){
-			rr[i][k] = a[j][i];
+    for(j=columnas-1;j>=0;j--){
+      rr[i][k] = a[j][i];
       k++;
-		}
-		rr[i][k]=0;
-	}
-	rr[filas]=0;
+    }
+    rr[i][k]=0;
+  }
+  rr[filas]=0;
   return rr;
 }
 
 char** rotateL(char**a){
 
-	
-	int filas = tamFila(a);
-	int columnas = tamCol(a);
-	
-	int i,j,k;
-	char** rotar=(char**)malloc(sizeof(char*)*(columnas));
-	
-	for(i=0;i<columnas;i++){
-		rotar[i]=(char*)malloc(sizeof(char)*(filas));
-	}
-	k=0;
-	for(i=columnas-1;i>=0;i--){
-		for(j=0;j<filas;j++){
-			rotar[k][j] = a[j][i];
-		}
-		rotar[k][j]=0;
-	       k++;	
-	}
-	rotar[columnas]=0;
-	return rotar;
+  
+  int filas = tamFila(a);
+  int columnas = tamCol(a);
+  
+  int i,j,k;
+  char** rotar=(char**)malloc(sizeof(char*)*(columnas));
+  
+  for(i=0;i<columnas;i++){
+    rotar[i]=(char*)malloc(sizeof(char)*(filas));
+  }
+  k=0;
+  for(i=columnas-1;i>=0;i--){
+    for(j=0;j<filas;j++){
+      rotar[k][j] = a[j][i];
+    }
+    rotar[k][j]=0;
+         k++; 
+  }
+  rotar[columnas]=0;
+  return rotar;
 }
 
 char** repeatH(char** fig,int n){
@@ -189,7 +189,7 @@ char** repeatH(char** fig,int n){
         unir[i][l]=fig[i][j];
         l++;
       }
-    }	
+    } 
     unir[i][l]=0;
   }
   unir[filas]=0;
@@ -200,26 +200,26 @@ char** repeatH(char** fig,int n){
 
 char** up(char**a,char**b){
 
-	int filas=tamFila(a)+tamFila(b);
-	int columnas=tamCol(a);
-	int m=tamFila(a);
-	int n=tamFila(b);
-	int i,j,k;
-	int cont=0;
-	char** upp=(char**)malloc(sizeof(char*)*(filas));
-	for(i=0;i<filas;i++){
-		upp[i]=(char*)malloc(sizeof(char)*(columnas));
-	}
+  int filas=tamFila(a)+tamFila(b);
+  int columnas=tamCol(a);
+  int m=tamFila(a);
+  int n=tamFila(b);
+  int i,j,k;
+  int cont=0;
+  char** upp=(char**)malloc(sizeof(char*)*(filas));
+  for(i=0;i<filas;i++){
+    upp[i]=(char*)malloc(sizeof(char)*(columnas));
+  }
 
-	for(j=0;j<m;j++){
-		strcpy(upp[j],a[j]);
-		cont++;
-		for(k=0;k<n;k++){
-		strcpy(upp[cont+k],b[k]);
-		}
-	}
-	upp[filas]=0;
-	return upp;
+  for(j=0;j<m;j++){
+    strcpy(upp[j],a[j]);
+    cont++;
+    for(k=0;k<n;k++){
+    strcpy(upp[cont+k],b[k]);
+    }
+  }
+  upp[filas]=0;
+  return upp;
 
 
 
