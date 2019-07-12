@@ -49,6 +49,28 @@ char** join(char**a,char**b){
   
   return unir;
 }
+char** superImpose(char** f1, char** f2){
+
+  int filas = tamFila(f1);
+  int columnas = tamCol(f1);
+  int i,j,k;
+  char* vacio= {" "};  
+
+  char** superI = (char**)malloc(sizeof(char*)*(filas));
+  for(i=0;i<filas;i++){
+    superI[i]=(char*)malloc(sizeof(char)*(columnas));
+    for(j=0;j<columnas;j++)
+      superI[i][j]=f2[i][j];
+    superI[i][j]=0;
+    for(k=0;k<columnas;k++){
+      if(f1[i][k]!=vacio[0])
+        superI[i][k]=f1[i][k];
+    }
+    superI[i][j]=0;
+  }
+  superI[filas]=0;
+  return superI;
+}
 
 char** reverse(char**a){
   int filas=tamFila(a);
@@ -64,6 +86,45 @@ char** reverse(char**a){
   }
   reves[filas]=0;
   return reves;
+}
+
+char** flipV(char** f){
+
+  int filas = tamFila(f);
+  int columnas = tamCol(f);
+  int i,j,j1; 
+
+  char** fv = (char**)malloc(sizeof(char*)*(filas));
+  for(i=0;i<filas;i++){
+    fv[i]=(char*)malloc(sizeof(char)*(columnas));
+    j1=0;
+    for(j=columnas-1;j>=0;j--){
+      fv[i][j1]=f[i][j];   
+      j1++; 
+    }
+    fv[i][j1]=0;
+  }
+  fv[filas]=0;
+  return fv;
+}
+
+char** flipH(char** f){
+
+  int filas = tamFila(f);
+  int columnas = tamCol(f);
+  int i,j;
+  int i1=0;
+
+  char** fh = (char**)malloc(sizeof(char*)*(filas));
+  for(i=filas-1;i>=0;i--){
+    fh[i1]=(char*)malloc(sizeof(char)*(columnas));
+    for(j=0;j<columnas-1;j++)
+      fh[i1][j]=f[i][j];
+    fh[i1][j]=0;
+    i1++;
+  }
+  fh[filas]=0;
+  return fh;
 }
 
 char** rotateR(char** a){
@@ -113,7 +174,6 @@ char** rotateL(char**a){
 	return rotar;
 }
 
-
 char** repeatH(char** fig,int n){
 
   int filas = tamFila(fig);
@@ -136,3 +196,52 @@ char** repeatH(char** fig,int n){
   return unir;
 }
 
+
+
+char** up(char**a,char**b){
+
+	int filas=tamFila(a)+tamFila(b);
+	int columnas=tamCol(a);
+	int m=tamFila(a);
+	int n=tamFila(b);
+	int i,j,k;
+	int cont=0;
+	char** upp=(char**)malloc(sizeof(char*)*(filas));
+	for(i=0;i<filas;i++){
+		upp[i]=(char*)malloc(sizeof(char)*(columnas));
+	}
+
+	for(j=0;j<m;j++){
+		strcpy(upp[j],a[j]);
+		cont++;
+		for(k=0;k<n;k++){
+		strcpy(upp[cont+k],b[k]);
+		}
+	}
+	upp[filas]=0;
+	return upp;
+
+
+
+}
+
+char** repeatV(char** fig,int n){
+
+  int filas = tamFila(fig);
+  int columnas = tamCol(fig);
+  int i,j,k,l=0;
+
+  char** unir = (char**)malloc(sizeof(char*)*(filas*n));
+  for(k=0;k<n;k++){
+    for(i=0;i<filas;i++){
+      unir[l]=(char*)malloc(sizeof(filas)*(columnas));
+        for(j=0;j<columnas;j++)
+          unir[l][j]=fig[i][j];
+        unir[l][j]=0;
+        l++;
+    }
+
+  }
+  unir[l]=0;
+  return unir;
+}
